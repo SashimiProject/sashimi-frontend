@@ -19,9 +19,9 @@ export const contractAddresses = {
   },
   // useless in heco
   investment: {
-    42: '0x88Ff08b44A0735631eE395AFeBF72f89Ab487bEB',
-    1: '0x88Ff08b44A0735631eE395AFeBF72f89Ab487bEB',
-    256: '0x88Ff08b44A0735631eE395AFeBF72f89Ab487bEB',
+    42: '0x90b1035365eE09d924eCf46fa05e429975B02B7F',
+    1: '0x90b1035365eE09d924eCf46fa05e429975B02B7F',
+    256: '0x90b1035365eE09d924eCf46fa05e429975B02B7F',
   },
   masterChef: {
     42: '0x130989912317e155189a522beaf63cb80bc69e72', // aelf sushi new one 9.9
@@ -42,7 +42,7 @@ export const wethSashimiLpPAddress = '0x5a29604c3d7577172b9be9cadd4f50453096817d
 export const supportedLendingInvestmentPools = [
   {
     lpAddress: '0x66Ec163991f890F4DdaE20c910Ad3E6e59c00C26', // USDT-HT
-    providerAddress: '0x2d695cB23B7fc2e7Dd8611c98F2BF7E5Dd70c0ed', // USDT vault provider
+    providerAddress: '0x8dDa235da0FAA9fC23f3f6dfC91cb8CfA4368Fcd', // USDT vault provider
     depositAddress: '0x01cA93a4c823251E7a8F0b1806bff83b89FA7E25',
     depositTokenDecimal: 18,
     depositTokenSymbol: 'USDT',
@@ -51,7 +51,7 @@ export const supportedLendingInvestmentPools = [
   },
   {
     lpAddress: '0xA2A9aea1647dA2370756edb4713Bcda13b09ef0d', // HT-HUSD
-    providerAddress: '0x2fd87D8D4C54fF6fdeeb0178d789d9E5dE55fc91', // HUSD vault provider
+    providerAddress: '0xE365f77427195dC493c1F7e7cf9Ddb0D5DE31128', // HUSD vault provider
     depositAddress: '0x7276e496B7B8A155c3257c2b0889c47a55D4f002',
     depositTokenDecimal: 8,
     depositTokenSymbol: 'HUSD',
@@ -60,7 +60,7 @@ export const supportedLendingInvestmentPools = [
   },
   {
     lpAddress: '0xE8e520BE769Ef3d45BD80C07b9Cd16d95309F531', // ETH-HT
-    providerAddress: '0xcEa73A8d9a801c9E35c37aA9c50f81903856Dd3C', // ETH vault provider
+    providerAddress: '0x24284E5bC914AED74666FF735554A0A10ccEB9E6', // ETH vault provider
     depositAddress: '0x5879180423f5D35a34721501a24F1116A446EC53',
     depositTokenDecimal: 18,
     depositTokenSymbol: 'ETH',
@@ -69,7 +69,7 @@ export const supportedLendingInvestmentPools = [
   },
   {
     lpAddress: '0x589Bf5BEb31ED9D4dE685596D7923730fa73E942', // HT-HBTC
-    providerAddress: '0xBa00BCB6688eA56247B9b72ECE1E9745A6CC1643', // ETH vault provider
+    providerAddress: '0x0A9BE6A4da9257dB37e28f9ddA904e764654Acc4', // ETH vault provider
     depositAddress: '0x5bE1a23a43afb38351F34D949C98fb338666d6E3',
     depositTokenDecimal: 18,
     depositTokenSymbol: 'HBTC',
@@ -78,7 +78,7 @@ export const supportedLendingInvestmentPools = [
   },
   {
     lpAddress: '0xE8e520BE769Ef3d45BD80C07b9Cd16d95309F531', // ETH-HT
-    providerAddress: '0x8a031E2e15625419055EbD24e6629b05Dd513370', // HT vault provider
+    providerAddress: '0x63e7F4Bb788A53abFD08c2f4E88F8fCEb7D3ed85', // HT vault provider
     depositAddress: '0x5b2da6f42ca09c77d577a12bead0446148830687',
     depositTokenDecimal: 18,
     depositTokenSymbol: 'HT',

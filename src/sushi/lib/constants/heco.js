@@ -1,3 +1,5 @@
+import * as tokenIcons from './tokenIcons';
+
 export const contractAddresses = {
   sushi: {
     42: '0xc2037c1c13dd589e0c14c699dd2498227d2172cc', // aelf sushi new one 9.9
@@ -18,12 +20,11 @@ export const contractAddresses = {
     256: '0x1DaeD74ed1dD7C9Dabbe51361ac90A69d851234D',
     128: '0x1DaeD74ed1dD7C9Dabbe51361ac90A69d851234D',
   },
-  // useless in heco
   investment: {
-    42: '0x3F966FA1c0606e19047ed72068D2857677E07EF4',
-    1: '0x3F966FA1c0606e19047ed72068D2857677E07EF4',
-    256: '0x3F966FA1c0606e19047ed72068D2857677E07EF4',
-    128: '0x3F966FA1c0606e19047ed72068D2857677E07EF4',
+    42: '0x942552C49889f5D4Ce034BBb3da97121a2D1d16b',
+    1: '0x942552C49889f5D4Ce034BBb3da97121a2D1d16b',
+    256: '0x942552C49889f5D4Ce034BBb3da97121a2D1d16b',
+    128: '0x942552C49889f5D4Ce034BBb3da97121a2D1d16b',
   },
   masterChef: {
     42: '0x06c7b472261f788634b62214adbb6d26795d85f9', // aelf sushi new one 9.9
@@ -39,6 +40,74 @@ export const contractAddresses = {
     128: '0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F', // sushi use
   },
 }
+
+export const sashimiAddress = '0xc2037c1c13dd589e0c14c699dd2498227d2172cc';
+export const wethAddress = '0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F';
+export const wethSashimiLpPAddress = '0xdcd6A829a705D2f022432C1A2B6532101FA37B27'; // HT-SASHIMI
+export const supportedLendingInvestmentPools = [
+  {
+    lpAddress: '0x048a7284c48b5d77af316ffc9d9cdbe8e454c5b1', // USDT-HT
+    providerAddress: '0xF2992bD1D3587b25c8Bfa9D7A3959F9d2F05Eab4', // USDT vault provider
+    depositAddress: '0xa71edc38d189767582c38a3145b5873052c3e47a',
+    depositTokenDecimal: 18,
+    depositTokenSymbol: 'USDT',
+    tokenSymbol: 'USDT',
+    icon: tokenIcons.usdt,
+  },
+  {
+    lpAddress: '0xC55Eb93e887D283d3616eC47e4c783Ad57b5Dab0', // HUSD-Sashimi
+    providerAddress: '0x1CBc41bC9f03FD0Ef0a29Fd343349A26593d6652', // HUSD vault provider
+    depositAddress: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
+    converterOptions: {
+      lpAddresses: [
+        '0xdcd6A829a705D2f022432C1A2B6532101FA37B27' // SASHIMI-HT
+      ],
+      pivotTokenAddresses: [
+        '0xc2037c1c13dd589e0c14c699dd2498227d2172cc'
+      ]
+    },
+    depositTokenDecimal: 8,
+    depositTokenSymbol: 'HUSD',
+    tokenSymbol: 'HUSD',
+    icon: tokenIcons.husd,
+  },
+  // {
+  //   lpAddress: '0xA2A9aea1647dA2370756edb4713Bcda13b09ef0d', // HT-HUSD
+  //   providerAddress: '0xE365f77427195dC493c1F7e7cf9Ddb0D5DE31128', // HUSD vault provider
+  //   depositAddress: '0x7276e496B7B8A155c3257c2b0889c47a55D4f002',
+  //   depositTokenDecimal: 8,
+  //   depositTokenSymbol: 'HUSD',
+  //   tokenSymbol: 'HUSD',
+  //   icon: tokenIcons.husd,
+  // },
+  {
+    lpAddress: '0x600e1e3dcf1a5dec900c0de66bc541bc07c438ce', // ETH-HT
+    providerAddress: '0x3596F25c9c9e7a2667407EFdbF66Df2Ba08B730c', // ETH vault provider
+    depositAddress: '0x64ff637fb478863b7468bc97d30a5bf3a428a1fd',
+    depositTokenDecimal: 18,
+    depositTokenSymbol: 'ETH',
+    tokenSymbol: 'ETH',
+    icon: tokenIcons.eth,
+  },
+  {
+    lpAddress: '0x6bf4c1c588a305a313691de2ef8abdcd37a6b62d', // HT-HBTC
+    providerAddress: '0xc576bF6b252Ffd3fC070dC93CeB5751EAac04186', // HBTC vault provider
+    depositAddress: '0x66a79D23E58475D2738179Ca52cd0b41d73f0BEa',
+    depositTokenDecimal: 18,
+    depositTokenSymbol: 'HBTC',
+    tokenSymbol: 'HBTC',
+    icon: tokenIcons.hbtc,
+  },
+  {
+    lpAddress: '0x600e1e3dcf1a5dec900c0de66bc541bc07c438ce', // ETH-HT
+    providerAddress: '0xF37801A7A8b6fc3923b7cA7C9F50AfA97688C369', // HT vault provider
+    depositAddress: '0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F',
+    depositTokenDecimal: 18,
+    depositTokenSymbol: 'HT',
+    tokenSymbol: 'HT',
+    icon: tokenIcons.ht,
+  },
+];
 
 export const supportedInvestmentPools = [
   // {
