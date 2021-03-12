@@ -13,7 +13,7 @@ export const Context = createContext<NetworkContext>({
 
 const NetworkProvider: React.FC = ({ children }) => {
   const { account, connect } = useWallet()
-  const [networkCorrect, setNetworkCorrect] = useState<any>()
+  const [networkCorrect, setNetworkCorrect] = useState<boolean>()
 
   useEffect(() => {
     (async () => {
