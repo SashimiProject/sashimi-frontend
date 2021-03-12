@@ -15,6 +15,7 @@ import FarmsProvider from './contexts/Farms'
 import ModalsProvider from './contexts/Modals'
 import YamProvider from './contexts/YamProvider'
 import TransactionProvider from './contexts/Transactions'
+import NetworkProvider from './contexts/NetworkProvider'
 
 import useModal from './hooks/useModal'
 
@@ -110,7 +111,9 @@ const Providers: React.FC = ({ children }) => {
           <YamProvider>
             <TransactionProvider>
               <FarmsProvider>
-                <ModalsProvider>{children}</ModalsProvider>
+                <ModalsProvider>
+                  <NetworkProvider>{children}</NetworkProvider>
+                  </ModalsProvider>
               </FarmsProvider>
             </TransactionProvider>
           </YamProvider>

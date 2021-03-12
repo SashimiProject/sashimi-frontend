@@ -1,11 +1,16 @@
 const CHAIN_ENV: string = process.env.REACT_APP_CHAIN_ENV || 'main';
 
 interface CHAIN_INFO {
-  chainId: number,
-  rpcUrl: string,
-  ethscanType: string,
-  exploreURL: string,
+  chainId: number
+  rpcUrl: string
+  ethscanType: string
+  exploreURL: string
   stakingPool: string
+  chainName: string
+  nativeCurrency: object
+  rpcUrls: Array<string>
+  blockExplorerUrls: Array<string>
+  iconUrls: Array<string>
 }
 
 const CHAIN_ENV_MAP: any = {
@@ -49,14 +54,43 @@ const CHAIN_ENV_MAP: any = {
     rpcUrl: 'https://data-seed-prebsc-1-s2.binance.org:8545',
     ethscanType: '',
     exploreURL: 'https://testnet.bscscan.com',
-    stakingPool: '0x0449dF5a5e69D61584dd6A6b486a5cF5E33EC1ED'
+    stakingPool: '0x0449dF5a5e69D61584dd6A6b486a5cF5E33EC1ED',
+
+    //add
+    chainName: 'Binance Smart Chain Testnet',
+    nativeCurrency: {
+      name: 'Binance Chain Native Token',
+      symbol: 'tBNB',
+      decimals: 18,
+    },
+    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],
+    blockExplorerUrls: ['https://testnet.bscscan.com/'],
+    iconUrls: ['https://etherscan.io/token/images/bnb_28_2.png']
   },
   bsc: {
     chainId: 56,
     rpcUrl: 'https://bsc-dataseed.binance.org',
     ethscanType: '',
     exploreURL: 'https://bscscan.com',
-    stakingPool: '0x0449dF5a5e69D61584dd6A6b486a5cF5E33EC1ED'
+    stakingPool: '0x0449dF5a5e69D61584dd6A6b486a5cF5E33EC1ED',
+
+    //add
+    chainName: 'Binance Smart Chain Mainnet',
+    nativeCurrency: {
+      name: 'Binance Chain Native Token',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    /**
+     * fix network details for this Chain ID do not match metamask records.
+     * use https://chainid.network/chains.json recorded
+     */
+    rpcUrls: [
+      'https://bsc-dataseed1.binance.org',
+      'https://bsc-dataseed.binance.org',
+    ],
+    blockExplorerUrls: ['https://bscscan.com/'],
+    iconUrls: ['https://etherscan.io/token/images/bnb_28_2.png'],
   },
 };
 
