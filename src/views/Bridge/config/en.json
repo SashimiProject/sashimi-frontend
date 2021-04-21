@@ -1,0 +1,26 @@
+{
+  "translation": {
+    "Bridge": "Bridge",
+    "Current tradable balance": "Current tradable balance",
+    "Current tradable balance Tip": "The tradable balance is updated daily after 0:00 (GMT)",
+    "Asset": "Asset",
+    "Receiving Address": "Receiving Address",
+    "Available Balance": "Available Balance",
+    "MAX": "MAX",
+    "Fee": "Fee",
+    "Insufficient Fees": "Insufficient Fees",
+    "Next Step": "Next Step",
+    "Transaction Successful": "Transaction Successful",
+    "Transaction Failed": "Transaction Failed",
+    "Insufficient Contract Balance": "Insufficient daily transaction balance, Current tradable balance is {{balance}}",
+    "This is the destination address of the To network": "This is the destination address of the To network",
+    "From": "From",
+    "To": "To",
+    "Note": "Note",
+    "Connected": "Connected",
+    "Bridge Note": "After the transaction is successful, the account will receive the token within 2 hours. If there is any inquiry, please contact us (Info@shardingdao.com)",
+    "Transaction failed. Please contact official team": "Transaction failed. Please contact official team.",
+    "Contract is under upgrading and maintenance. Trading has been paused. Thanks for your patience.": "Contract is under upgrading and maintenance. Trading has been paused. Thanks for your patience.",
+    "BRIDGE END": "bridge end"
+  }
+}

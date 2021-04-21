@@ -33,6 +33,7 @@ import { getEthChainInfo } from './utils/getEthChainInfo'
 
 import theme from './theme'
 import './App.less';
+import Bridge from './views/Bridge';
 
 const {
   Header,
@@ -71,6 +72,9 @@ const App: React.FC = () => {
               </Route>
               <Route path="/faq">
                 <FAQ />
+              </Route>
+              <Route path="/bridge">
+                <Bridge />
               </Route>
               {/*<Route path="/exchanges">*/}
               {/*  <ComingSoon title={'Sashimi Swap'}/>*/}
