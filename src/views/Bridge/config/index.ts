@@ -8,6 +8,7 @@ export type toNetworksType = {
   2: NetworkType
 }
 type INFO = {
+  NETWORK_URL: string
   BRIDGE_TOKEN_LIST: Array<{
     address: string
     symbol: string
@@ -28,6 +29,8 @@ export const Networks = {
 }
 const config: any = {
   main: {
+    NETWORK_URL:
+      'https://mainnet.infura.io/v3/798f728850664ccdba2f40009460b5b9',
     BRIDGE_TOKEN_LIST: [
       {
         address: '0x5845Cd0205b5d43AF695412a79Cf7C1Aeddb060F',
@@ -43,6 +46,7 @@ const config: any = {
     arrowsHref: 'https://app-bsc.shardingdao.com/bridge',
   },
   kovan: {
+    NETWORK_URL: 'https://kovan.infura.io/v3/798f728850664ccdba2f40009460b5b9',
     BRIDGE_TOKEN_LIST: [
       {
         address: '0x6ee7451f71cBbB3d35f11b41b28EaB4f750d2e7e',
@@ -58,6 +62,7 @@ const config: any = {
     arrowsHref: 'https://test2-app-bsc.shardingdao.com/bridge',
   },
   'bsc-test': {
+    NETWORK_URL: 'https://data-seed-prebsc-1-s2.binance.org:8545',
     BRIDGE_TOKEN_LIST: [
       {
         address: '0x7edAa8416Fae666133eb5E1e09f5e3f13628bAA0',
@@ -73,6 +78,7 @@ const config: any = {
     arrowsHref: 'https://test2-app.shardingdao.com/bridge',
   },
   bsc: {
+    NETWORK_URL: 'https://bsc-dataseed.binance.org',
     BRIDGE_TOKEN_LIST: [
       {
         address: '0x6ee7451f71cBbB3d35f11b41b28EaB4f750d2e7e',
@@ -88,6 +94,7 @@ const config: any = {
     arrowsHref: 'https://app.shardingdao.com/bridge',
   },
   heco: {
+    NETWORK_URL: 'https://http-mainnet.hecochain.com',
     BRIDGE_TOKEN_LIST: [
       {
         address: '0x0FbE40B0E1fcbf5b9971C96fe2DA9Dc9DE2d70D5',
@@ -103,6 +110,7 @@ const config: any = {
     arrowsHref: 'https://app.shardingdao.com/bridge',
   },
   'heco-test': {
+    NETWORK_URL: 'https://http-testnet.hecochain.com',
     BRIDGE_TOKEN_LIST: [
       {
         address: '0x5539F31C6FE629DD7ccE26d2b4B3fC22443B3148',

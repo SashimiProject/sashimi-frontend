@@ -1,3 +1,4 @@
 import CrossChainABI from './CrossChain.json'
+import erc20 from './erc20.json'
 
-export { CrossChainABI }
+export { CrossChainABI, erc20 }

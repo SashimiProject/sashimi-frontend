@@ -20,11 +20,11 @@ import ConfirmModal from './components/ConfirmModal'
 import NetworkList from './components/NetworkList'
 import { QuestionCircleOutlined } from '@ant-design/icons'
 import { FormInstance } from 'antd/lib/form'
-import { ContractBasic } from '../../utils/contract'
 import useMBalance from './hooks/useMBalance'
 import useTranslation from './utils/useTranslation'
 import WalletProviderModal from '../../components/WalletProviderModal'
 import useModal from '../../hooks/useModal'
+import { ContractBasic } from './utils/contract'
 const { BRIDGE_TOKEN_LIST, CrossChainAddress, feeSymbol, toNetwork } = config
 const defaultToken = BRIDGE_TOKEN_LIST[0]
 const delay = 30000
@@ -244,7 +244,7 @@ const Bridge: React.FC = () => {
             rules={[{ validator: amountValidator }]}
           >
             <Input
-              placeholder={`${minAmount} ${symbol} - ${showBalance} ${symbol}`}
+              // placeholder={`${minAmount} ${symbol} - ${showBalance} ${symbol}`}
               id="amount"
               type="number"
               className="input-element"

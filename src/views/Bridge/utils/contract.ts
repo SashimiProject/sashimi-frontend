@@ -3,10 +3,10 @@ import { provider } from 'web3-core'
 import { AbiItem } from 'web3-utils'
 
 import { Contract, SendOptions } from 'web3-eth-contract'
-import { CrossChainABI } from '../views/Bridge/abi'
-import ERC20 from '../constants/abi/ERC20.json'
-// import { NETWORK_URL } from '../constants/index';
-
+import { CrossChainABI, erc20 } from '../abi'
+import config from '../config'
+import { type } from 'os'
+const { NETWORK_URL } = config
 // TODO: optional, use contract.d.ts
 interface ContractProps {
   contractName?: keyof typeof contractsABI
@@ -21,6 +21,11 @@ interface ErrorMsg {
 
 type InitContract = (
   provider: provider,
+  address: string,
+  ABI: AbiItem[] | AbiItem,
+) => Contract
+
+type InitViewOnlyContract = (
   address: string,
   ABI: AbiItem[] | AbiItem,
 ) => Contract
@@ -42,27 +47,16 @@ export type ContractBasicErrorMsg = ErrorMsg
 
 const contractsABI = {
   CrossChainABI: CrossChainABI,
-  ERC20: ERC20.abi,
+  ERC20: erc20,
 }
 
-// const defaultProvider = new Web3.providers.HttpProvider(
-//   NETWORK_URL,
-//   {
-//     keepAlive: true,
-//     withCredentials: false,
-//     timeout: 20000, // ms
-//   }
-// );
-// export const defaultWeb3 = new Web3(defaultProvider);
+const defaultProvider = new Web3.providers.HttpProvider(NETWORK_URL, {
+  keepAlive: true,
+  withCredentials: false,
+  timeout: 20000, // ms
+})
+export const defaultWeb3 = new Web3(defaultProvider)
 
-// Example
-// const NFTContract =
-// new ContractBasic({
-//   contractName: 'NFT',
-//   provider,
-//   contractAddress: values.NFTContractAddress
-// });
-// TODO: optional. Abstract factory
 export class ContractBasic {
   public contract: Contract | null
   public contractForView: Contract
@@ -76,7 +70,10 @@ export class ContractBasic {
     this.contract = provider
       ? this.initContract(provider, contractAddress, contactABITemp as AbiItem)
       : null
-    // this.contractForView = this.initViewOnlyContract(provider || defaultProvider, contractAddress, contactABITemp as AbiItem);
+    this.contractForView = this.initViewOnlyContract(
+      contractAddress,
+      contactABITemp as AbiItem,
+    )
     this.address = contractAddress
   }
 
@@ -85,21 +82,18 @@ export class ContractBasic {
     return new web3.eth.Contract(ABI, address)
   }
 
-  // public initViewOnlyContract: InitContract = (provider, address, ABI) => {
-  //   return new defaultWeb3.eth.Contract(ABI, address,);
-  // };
+  public initViewOnlyContract: InitViewOnlyContract = (address, ABI) => {
+    return new defaultWeb3.eth.Contract(ABI, address)
+  }
 
   public callViewMethod: CallViewMethod = async (
     functionName,
     paramsOption,
     callOptions = {},
   ) => {
-    if (!this.contract) {
-      return { error: { code: 401, message: 'Contract init error' } }
-    }
     try {
-      const contract = this.contract
-      // const contract = this.contract || this.contractForView
+      // const contract = this.contract
+      const contract = this.contract || this.contractForView
       if (paramsOption) {
         return await contract.methods[functionName](...paramsOption).call(
           callOptions.opitions,

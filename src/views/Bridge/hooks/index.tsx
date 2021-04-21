@@ -4,10 +4,11 @@ import BigNumber from 'bignumber.js'
 import { useCallback, useEffect, useState } from 'react'
 import { useWallet } from 'use-wallet'
 import { provider } from 'web3-core'
-import { ContractBasic } from '../../../utils/contract'
-import { callERC20ViewMethod, getBalance } from '../../../utils/erc20'
+import { getBalance } from '../../../utils/erc20'
 import config from '../config'
 import { isUTCToday } from '../utils'
+import { ContractBasic } from '../utils/contract'
+import { callERC20ViewMethod } from '../utils/erc20'
 const { CrossChainAddress, feeDecimals } = config
 type bridge = {
   crossChainInfo: {
@@ -82,6 +83,8 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
       provider: ethereum,
       contractAddress: CrossChainAddress,
     })
+    console.log(address, '=====address')
+
     const [
       reqFee,
       maxAmount,
@@ -92,11 +95,20 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
     ] = await Promise.all([
       contract.callViewMethod('fee', [toChainID]),
       contract.callViewMethod('maxAmount', [address]),
-      contract.callViewMethod('maxAmountPerDay', [address]),
+      contract.callViewMethod('maxSendAmountPerDay', [address]),
       contract.callViewMethod('sendTotalAmount', [address]),
       contract.callViewMethod('timestamp'),
       contract.callViewMethod('paused'),
     ])
+    console.log(
+      reqFee,
+      maxAmount,
+      maxAmountPerDay,
+      sendTotalAmount,
+      timestamp,
+      paused,
+    )
+
     const obj: any = {}
     if (!reqFee.error) obj.fee = new BigNumber(reqFee)
 
@@ -112,6 +124,8 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
     if (!paused.error) {
       obj.paused = paused
     }
+    console.log(obj, '=======obj')
+
     setCrossChainInfo(obj)
   }, [address, ethereum, toChainID])
   const getCrossChainInfo = useCallback(() => {

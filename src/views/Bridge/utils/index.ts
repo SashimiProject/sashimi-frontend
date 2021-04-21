@@ -2,10 +2,10 @@ import { message } from 'antd'
 import BigNumber from 'bignumber.js'
 import { isAddress } from '@ethersproject/address'
 import config from '../config'
-import { ContractBasic } from '../../../utils/contract'
-import { checkAllowanceAndApprove } from '../../../utils/erc20'
 import { t } from './useTranslation'
 import { provider } from 'web3-core'
+import { ContractBasic } from './contract'
+import { checkAllowanceAndApprove } from './erc20'
 
 const { CrossChainAddress } = config
 
@@ -56,7 +56,7 @@ export const checkCrossChainTransfer = async (
   timesDigits: (v: BigNumber | string | undefined) => BigNumber,
   divDigits: (v: BigNumber | string | undefined) => BigNumber,
   amount: string,
-  toChainID: number
+  toChainID: number,
 ): Promise<any> => {
   const [
     reqFee,
@@ -67,7 +67,7 @@ export const checkCrossChainTransfer = async (
   ] = await Promise.all([
     contract.callViewMethod('fee', [toChainID]),
     // contract.callViewMethod("maxAmount", [address]),
-    contract.callViewMethod('maxAmountPerDay', [address]),
+    contract.callViewMethod('maxSendAmountPerDay', [address]),
     contract.callViewMethod('sendTotalAmount', [address]),
     contract.callViewMethod('timestamp'),
   ])
