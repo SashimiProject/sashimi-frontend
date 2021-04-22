@@ -26,6 +26,7 @@ import WalletProviderModal from '../../components/WalletProviderModal'
 import useModal from '../../hooks/useModal'
 import { ContractBasic } from './utils/contract'
 const { BRIDGE_TOKEN_LIST, CrossChainAddress, feeSymbol, toNetwork } = config
+const defaultToChainId = Number(Object.keys(toNetwork)[0])
 const defaultToken = BRIDGE_TOKEN_LIST[0]
 const delay = 30000
 const Bridge: React.FC = () => {
@@ -36,7 +37,7 @@ const Bridge: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const [visible, setVisible] = useState<boolean>(false)
   const [values, setValues] = useState<{ amount: string; toAddress: string }>()
-  const [toChainID, setToChainId] = useState(Number(Object.keys(toNetwork)[0]))
+  const [toChainID, setToChainId] = useState(defaultToChainId)
   const [bridgeInfo, { setToken, getCrossChainInfo }] = useBridge(
     defaultToken,
     toChainID,
