@@ -11,6 +11,16 @@
   overflow: hidden;
 }
 .sharding-bridge {
+  .ant-form-item-has-error .ant-form-item-explain,
+  .ant-form-item-has-error .ant-form-item-split {
+    color: @alter-waring-color;
+  }
+  .ant-form-item-has-error .ant-input,
+  .ant-form-item-has-error .ant-input-affix-wrapper,
+  .ant-form-item-has-error .ant-input:hover,
+  .ant-form-item-has-error .ant-input-affix-wrapper:hover {
+    border-color: @alter-waring-color;
+  }
   margin: auto;
   width: 100%;
   max-width: 700px;
@@ -20,9 +30,6 @@
   h1 {
     font-size: 35px;
     font-weight: 600;
-  }
-  .ant-form-item-explain.ant-form-item-explain-error {
-    color: @primary-text;
   }
   .bridge-line {
     color: #9da2aa;
@@ -34,12 +41,13 @@
     border: 1px solid @border-color;
     margin-bottom: 10px;
   }
-  .ant-alert-error {
+  .ant-alert-warning {
+    border: 1px solid @border-color;
+    background: @border-color;
     font-size: 14px;
-    margin: 5px;
+    margin: 15px 0;
     border-radius: 10px;
     text-align: center;
-    border: 1px solid @alter-waring-color;
     .ant-alert-message,
     .ant-alert-icon {
       color: @alter-waring-color;
@@ -190,6 +198,7 @@
     border-radius: 8px;
     height: 25px;
     line-height: 25px;
+    padding: 0 10px;
   }
   .tip-box {
     color: @text-normal-color;

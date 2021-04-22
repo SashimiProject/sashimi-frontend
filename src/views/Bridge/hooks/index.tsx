@@ -100,14 +100,6 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
       contract.callViewMethod('timestamp'),
       contract.callViewMethod('paused'),
     ])
-    console.log(
-      reqFee,
-      maxAmount,
-      maxAmountPerDay,
-      sendTotalAmount,
-      timestamp,
-      paused,
-    )
 
     const obj: any = {}
     if (!reqFee.error) obj.fee = new BigNumber(reqFee)
@@ -124,8 +116,6 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
     if (!paused.error) {
       obj.paused = paused
     }
-    console.log(obj, '=======obj')
-
     setCrossChainInfo(obj)
   }, [address, ethereum, toChainID])
   const getCrossChainInfo = useCallback(() => {

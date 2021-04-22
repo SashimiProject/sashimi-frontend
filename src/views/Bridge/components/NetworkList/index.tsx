@@ -81,7 +81,7 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
       <Col className="network-list">
         {!modal && (
           <Col className="arrows-box">
-            <a target="_blank" rel="noopener noreferrer" href={arrowsHref}>
+            <a target="_blank" rel="noopener noreferrer" href={toNetwork[toChainID].arrowsHref}>
               <img src={images.arrows} alt="" />
             </a>
           </Col>
@@ -113,7 +113,7 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
         </Row>
       </Col>
       <Col className="arrows-box">
-        <a target="_blank" rel="noopener noreferrer" href={arrowsHref}>
+        <a target="_blank" rel="noopener noreferrer" href={toNetwork[toChainID].arrowsHref}>
           <img src={modal ? images.arrowRight : images.arrows} alt="" />
         </a>
       </Col>

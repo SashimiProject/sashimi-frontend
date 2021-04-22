@@ -191,10 +191,11 @@ const Bridge: React.FC = () => {
     <div className="sharding-bridge">
       {paused && (
         <Alert
+          showIcon
           message={t(
             'Contract is under upgrading and maintenance. Trading has been paused. Thanks for your patience.',
           )}
-          type="error"
+          type="warning"
         />
       )}
       <p className="tradable-balance">

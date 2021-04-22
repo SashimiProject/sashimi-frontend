@@ -23,9 +23,21 @@ type INFO = {
   arrowsHref: string
 }
 export const Networks = {
-  0: { src: images.eth, title: 'Ethereum Network' },
-  1: { src: images.bnb, title: 'Binance Smart Chain Network' },
-  2: { src: images.ht, title: 'Huobi Network' },
+  0: {
+    src: images.eth,
+    title: 'Ethereum Network',
+    arrowsHref: 'https://sashimi.cool/bridge',
+  },
+  1: {
+    src: images.bnb,
+    title: 'Binance Network',
+    arrowsHref: 'https://heco.sashimi.cool/bsc',
+  },
+  2: {
+    src: images.ht,
+    title: 'Heco Network',
+    arrowsHref: 'https://heco.sashimi.cool/bridge',
+  },
 }
 const config: any = {
   main: {
@@ -43,7 +55,6 @@ const config: any = {
     CrossChainAddress: '0xb661ef22dd089063d48efce2cf8e19917797bbfb',
     formNetwork: Networks[0],
     toNetwork: { 1: Networks[1], 2: Networks[2] },
-    arrowsHref: 'https://app-bsc.shardingdao.com/bridge',
   },
   kovan: {
     NETWORK_URL: 'https://kovan.infura.io/v3/798f728850664ccdba2f40009460b5b9',
@@ -59,7 +70,6 @@ const config: any = {
     CrossChainAddress: '0x3382CBB7D49F5e56d3aa8663bC81A3a6fc84f33A',
     formNetwork: Networks[0],
     toNetwork: { 1: Networks[1], 2: Networks[2] },
-    arrowsHref: 'https://test2-app-bsc.shardingdao.com/bridge',
   },
   'bsc-test': {
     NETWORK_URL: 'https://data-seed-prebsc-1-s2.binance.org:8545',
@@ -75,7 +85,6 @@ const config: any = {
     CrossChainAddress: '0x2Cc578fA7AD8Ed69C09cfdBc4788623ccE9595b0',
     formNetwork: Networks[1],
     toNetwork: { 0: Networks[0], 2: Networks[2] },
-    arrowsHref: 'https://test2-app.shardingdao.com/bridge',
   },
   bsc: {
     NETWORK_URL: 'https://bsc-dataseed.binance.org',
@@ -91,7 +100,6 @@ const config: any = {
     CrossChainAddress: '0x3382CBB7D49F5e56d3aa8663bC81A3a6fc84f33A',
     formNetwork: Networks[1],
     toNetwork: { 0: Networks[0], 2: Networks[2] },
-    arrowsHref: 'https://app.shardingdao.com/bridge',
   },
   heco: {
     NETWORK_URL: 'https://http-mainnet.hecochain.com',
@@ -107,7 +115,6 @@ const config: any = {
     CrossChainAddress: '0x097d70646e1AfE02CC8d3A96C32D3686bE0f1f75',
     formNetwork: Networks[2],
     toNetwork: { 0: Networks[0], 1: Networks[1] },
-    arrowsHref: 'https://app.shardingdao.com/bridge',
   },
   'heco-test': {
     NETWORK_URL: 'https://http-testnet.hecochain.com',
@@ -123,7 +130,6 @@ const config: any = {
     CrossChainAddress: '0x6DdD3767fD2eD3d584B0fb706Af38d5AEc752164',
     formNetwork: Networks[2],
     toNetwork: { 0: Networks[0], 1: Networks[1] },
-    arrowsHref: 'https://app.shardingdao.com/bridge',
   },
 }
 
