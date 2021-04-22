@@ -26,8 +26,9 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
         selectedKeys={[String(toChainID)]}
         onClick={({ key }) => {
           setVisible(false)
-          if (key == toChainID) return
-          setToChainId?.(Number(key))
+          const num = Number(key)
+          if (num === toChainID) return
+          setToChainId?.(num)
         }}
       >
         {Object.entries(toNetwork).map(([key, item]: [any, any]) => {
@@ -81,7 +82,11 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
       <Col className="network-list">
         {!modal && (
           <Col className="arrows-box">
-            <a target="_blank" rel="noopener noreferrer" href={toNetwork[toChainID].arrowsHref}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={toNetwork[toChainID].arrowsHref}
+            >
               <img src={images.arrows} alt="" />
             </a>
           </Col>
@@ -113,7 +118,11 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
         </Row>
       </Col>
       <Col className="arrows-box">
-        <a target="_blank" rel="noopener noreferrer" href={toNetwork[toChainID].arrowsHref}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={toNetwork[toChainID].arrowsHref}
+        >
           <img src={modal ? images.arrowRight : images.arrows} alt="" />
         </a>
       </Col>
