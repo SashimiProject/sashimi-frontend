@@ -7,7 +7,7 @@ import metamaskLogo from '../../../../assets/img/metamask-fox.svg'
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import { useWallet } from 'use-wallet'
 import useTranslation from '../../utils/useTranslation'
-const { formNetwork, arrowsHref, toNetwork } = config
+const { formNetwork, toNetwork } = config
 interface Props {
   modal?: boolean
   toChainID: any
