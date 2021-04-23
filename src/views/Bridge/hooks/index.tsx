@@ -5,11 +5,11 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation, usePrevious } from 'react-use'
 import { useWallet } from 'use-wallet'
 import { provider } from 'web3-core'
-import { getBalance } from '../../../utils/erc20'
 import config from '../config'
 import { isUTCToday } from '../utils'
 import { ContractBasic } from '../utils/contract'
 import { callERC20ViewMethod } from '../utils/erc20'
+import { useBalances } from './useBalances'
 const { CrossChainAddress, feeDecimals } = config
 type bridge = {
   crossChainInfo: {
@@ -34,29 +34,19 @@ type bridge = {
   symbol: string
 }[]
 export const useBridge = (defaultValue: any, toChainID: number): bridge => {
-  const [balance, setBalance] = useState<BigNumber>()
   const [crossChainInfo, setCrossChainInfo] = useState<any>({})
   const { fee } = crossChainInfo
   const [token, Token] = useState(defaultValue ?? {})
   const { address, decimals } = token
+  const [[balance]] = useBalances(address)
+
   const {
     account,
     ethereum,
   }: { account: string | null; ethereum: provider } = useWallet()
-  const onGetBalance = useCallback(async () => {
-    const b = await getBalance(ethereum, address, account ?? '')
-    const reqB = new BigNumber(b)
-    setBalance(reqB)
-  }, [ethereum, address, account])
-  const setToken = useCallback(
-    (i) => {
-      Token(i)
-      if (i.address !== token.address) {
-        setBalance(undefined)
-      }
-    },
-    [token.address],
-  )
+  const setToken = useCallback((i) => {
+    Token(i)
+  }, [])
 
   const onGetDecimal = useCallback(async () => {
     const decimals = await callERC20ViewMethod('decimals', ethereum, address)
@@ -71,11 +61,8 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
       if (!decimals) {
         onGetDecimal()
       }
-      onGetBalance()
-    } else if (!account) {
-      setBalance(undefined)
     }
-  }, [account, address, decimals, ethereum, onGetBalance, onGetDecimal])
+  }, [account, address, decimals, ethereum, onGetDecimal])
   const getChainInfo = useCallback(async () => {
     if (!address) return
 
@@ -135,7 +122,9 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
       showFee: fee ? fee.dividedBy(10 ** Number(feeDecimals)).toFixed() : '-',
       dBalance,
       showBalance:
-        decimals && balance ? balance.dividedBy(10 ** decimals).toFixed() : '-',
+        decimals && balance && !balance.isNaN()
+          ? balance.dividedBy(10 ** decimals).toFixed()
+          : '-',
     },
     { setToken, getCrossChainInfo },
   ]
