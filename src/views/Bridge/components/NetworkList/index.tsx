@@ -86,7 +86,7 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={toNetwork[toChainID].arrowsHref}
+              href={`${toNetwork[toChainID].arrowsHref}?toChainId=${formNetworkID}`}
             >
               <img src={images.arrows} alt="" />
             </a>
