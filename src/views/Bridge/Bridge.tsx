@@ -129,7 +129,7 @@ const Bridge: React.FC = () => {
         return
       }
       setLoading(false)
-      form.current?.resetFields()
+      form.current?.setFieldsValue({ amount: undefined })
       message.success(t('Transaction Successful'))
 
       timer.current && clearTimeout(timer.current)
