@@ -47,7 +47,7 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
     return (
       <Col
         span={below768 ? 24 : 10}
-        className={`to-box${!below768 && modal ? ' to-box-modal' : ''}`}
+        className={`to-box${modal ? ' to-box-modal' : ''}`}
       >
         <span className="item-title">{t('To')}</span>
         {modal ? (
