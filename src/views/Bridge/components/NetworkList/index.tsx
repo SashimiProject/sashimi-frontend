@@ -4,6 +4,7 @@ import { useMedia } from 'react-use'
 import config from '../../config'
 import images from '../../images'
 import metamaskLogo from '../../../../assets/img/metamask-fox.svg'
+import walletConnectLogo from '../../../../assets/img/wallet-connect.svg'
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import { useWallet } from 'use-wallet'
 import useTranslation from '../../utils/useTranslation'
@@ -15,10 +16,10 @@ interface Props {
 }
 const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
   const below768 = useMedia('(max-width: 768px)')
-  const { account } = useWallet()
+  const { account, connector } = useWallet()
 
   const { t } = useTranslation()
-  const icon = metamaskLogo
+  const icon = connector === 'injected' ? metamaskLogo : walletConnectLogo
   const [visible, setVisible] = useState<boolean>(false)
   const menu = useMemo(() => {
     return (
@@ -96,6 +97,12 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
           <Row className="item-row">
             <img className="chain-icon" src={formNetwork.src} alt="" />
             <span>{formNetwork.title}</span>
+            {!modal && account ? (
+              <Row className="wallet-icon">
+                <span className="wallet-text">{t('Connected')}</span>
+                <img src={icon} alt="" />
+              </Row>
+            ) : null}
           </Row>
         </Col>
         {toMemo}
@@ -118,13 +125,17 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
         </Row>
       </Col>
       <Col className="arrows-box">
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={toNetwork[toChainID].arrowsHref}
-        >
-          <img src={modal ? images.arrowRight : images.arrows} alt="" />
-        </a>
+        {modal ? (
+          <img src={images.arrowRight} alt="" />
+        ) : (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`${toNetwork[toChainID].arrowsHref}?toChainId=${toChainID}`}
+          >
+            <img src={images.arrows} alt="" />
+          </a>
+        )}
       </Col>
       {toMemo}
     </Row>
