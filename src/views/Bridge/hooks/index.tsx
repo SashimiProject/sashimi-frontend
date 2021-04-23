@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import BigNumber from 'bignumber.js'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useLocation, usePrevious } from 'react-use'
 import { useWallet } from 'use-wallet'
 import { provider } from 'web3-core'
 import { getBalance } from '../../../utils/erc20'
@@ -83,8 +84,6 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
       provider: ethereum,
       contractAddress: CrossChainAddress,
     })
-    console.log(address, '=====address')
-
     const [
       reqFee,
       maxAmount,
@@ -100,7 +99,6 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
       contract.callViewMethod('timestamp'),
       contract.callViewMethod('paused'),
     ])
-
     const obj: any = {}
     if (!reqFee.error) obj.fee = new BigNumber(reqFee)
 
@@ -141,4 +139,35 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
     },
     { setToken, getCrossChainInfo },
   ]
+}
+export const useUrlParams = () => {
+  const obj: any = {}
+  const { search } = useLocation()
+  if (typeof search === 'string') {
+    const pairs = search.slice(1).split('&')
+    Array.isArray(pairs) &&
+      pairs.forEach((i) => {
+        const pair: any = i.split('=')
+        obj[pair[0]] = pair[1]
+      })
+  }
+  return obj
+}
+export const useAccountEffect = (
+  callback: (account: string, prevAccount?: string) => void,
+) => {
+  const savedCallback = useRef<
+    (account: string, prevAccount?: string) => void
+  >()
+  useEffect(() => {
+    savedCallback.current = callback
+  })
+  const { account }: { account: string | null } = useWallet()
+  const prevAccount = usePrevious(account)
+
+  useEffect(() => {
+    if (prevAccount !== account) {
+      savedCallback.current?.(account, prevAccount)
+    }
+  }, [account, prevAccount])
 }

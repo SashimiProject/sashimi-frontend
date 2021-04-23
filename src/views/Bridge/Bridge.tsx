@@ -11,7 +11,7 @@ import {
 } from 'antd'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import SelectToken from './components/SelectToken'
-import { useBridge } from './hooks'
+import { useAccountEffect, useBridge, useUrlParams } from './hooks'
 import './styles.less'
 import { addressValidator, checkCrossChainTransfer } from './utils'
 import config from './config'
@@ -30,6 +30,10 @@ const defaultToChainId = Number(Object.keys(toNetwork)[0])
 const defaultToken = BRIDGE_TOKEN_LIST[0]
 const delay = 30000
 const Bridge: React.FC = () => {
+  const { toChainId } = useUrlParams()
+  const numToChainId = Object.keys(toNetwork).includes(toChainId)
+    ? Number(toChainId)
+    : null
   const form = useRef<FormInstance>(null)
   const timer = useRef<any>()
   const [onPresentWalletProviderModal] = useModal(<WalletProviderModal />)
@@ -37,7 +41,7 @@ const Bridge: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const [visible, setVisible] = useState<boolean>(false)
   const [values, setValues] = useState<{ amount: string; toAddress: string }>()
-  const [toChainID, setToChainId] = useState(defaultToChainId)
+  const [toChainID, setToChainId] = useState(numToChainId || defaultToChainId)
   const [bridgeInfo, { setToken, getCrossChainInfo }] = useBridge(
     defaultToken,
     toChainID,
@@ -77,12 +81,6 @@ const Bridge: React.FC = () => {
   useEffect(() => {
     return () => timer.current && clearTimeout(timer.current)
   }, [])
-  useEffect(() => {
-    const to = form.current?.getFieldValue('toAddress')
-    if (account && to === undefined) {
-      form.current?.setFieldsValue({ toAddress: account })
-    }
-  }, [account])
   const onFinish = useCallback((v) => {
     setVisible(true)
     setValues(v)
@@ -188,6 +186,13 @@ const Bridge: React.FC = () => {
     },
     [dBalance, minAmount, sendAmount, t],
   )
+  useAccountEffect((account, prevAccount) => {
+    const to = form.current?.getFieldValue('toAddress')
+    if (to === undefined || to === prevAccount) {
+      form.current?.setFieldsValue({ toAddress: account || undefined })
+    }
+    form.current?.setFieldsValue({ amount: undefined })
+  })
   return (
     <div className="sharding-bridge">
       {paused && (
@@ -266,7 +271,7 @@ const Bridge: React.FC = () => {
                     form.current?.validateFields(['amount'])
                   }}
                 >
-                  {t('All')}
+                  {t('MAX')}
                 </Tag>
               }
             />

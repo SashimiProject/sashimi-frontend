@@ -66,10 +66,10 @@ const ConfirmModal: React.FC<Props> = ({
       >
         {t('Confirm')}
       </Button>
-      <div className="confirm-note">
+      {/* <div className="confirm-note">
         {t('Note')}:&nbsp;
         {t('Bridge Note')}
-      </div>
+      </div> */}
     </Modal>
   )
 }
