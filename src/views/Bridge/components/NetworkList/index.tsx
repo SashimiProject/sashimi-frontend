@@ -8,7 +8,7 @@ import walletConnectLogo from '../../../../assets/img/wallet-connect.svg'
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import { useWallet } from 'use-wallet'
 import useTranslation from '../../utils/useTranslation'
-const { formNetwork, toNetwork } = config
+const { formNetwork, toNetwork, formNetworkID } = config
 interface Props {
   modal?: boolean
   toChainID: any
@@ -131,7 +131,7 @@ const NetworkList: React.FC<Props> = ({ modal, toChainID, setToChainId }) => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={`${toNetwork[toChainID].arrowsHref}?toChainId=${toChainID}`}
+            href={`${toNetwork[toChainID].arrowsHref}?toChainId=${formNetworkID}`}
           >
             <img src={images.arrows} alt="" />
           </a>
