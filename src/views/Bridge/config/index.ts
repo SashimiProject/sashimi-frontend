@@ -20,6 +20,7 @@ type INFO = {
   formNetwork: NetworkType
   toNetwork: any
   networkList: Array<NetworkType>
+  formNetworkID: number
 }
 export const Networks: any = {
   0: {
@@ -79,6 +80,7 @@ const config: any = {
     feeDecimals: '18',
     feeSymbol: 'ETH',
     CrossChainAddress: '0xb661ef22dd089063d48efce2cf8e19917797bbfb',
+    formNetworkID: 0,
     formNetwork: Networks[0],
     toNetwork: getToNetwork(0, Networks),
   },
@@ -94,6 +96,7 @@ const config: any = {
     feeDecimals: '18',
     feeSymbol: 'BNB',
     CrossChainAddress: '0x3382CBB7D49F5e56d3aa8663bC81A3a6fc84f33A',
+    formNetworkID: 1,
     formNetwork: Networks[1],
     toNetwork: getToNetwork(1, Networks),
   },
@@ -109,6 +112,7 @@ const config: any = {
     feeDecimals: '18',
     feeSymbol: 'HT',
     CrossChainAddress: '0x097d70646e1AfE02CC8d3A96C32D3686bE0f1f75',
+    formNetworkID: 2,
     formNetwork: Networks[2],
     toNetwork: getToNetwork(2, Networks),
   },
@@ -124,7 +128,8 @@ const config: any = {
     feeDecimals: '18',
     feeSymbol: 'ETH',
     CrossChainAddress: '0x3382CBB7D49F5e56d3aa8663bC81A3a6fc84f33A',
-    formNetwork: Networks[0],
+    formNetworkID: 0,
+    formNetwork: testNetworks[0],
     toNetwork: getToNetwork(0, testNetworks),
   },
   'bsc-test': {
@@ -139,7 +144,8 @@ const config: any = {
     feeDecimals: '18',
     feeSymbol: 'BNB',
     CrossChainAddress: '0x2Cc578fA7AD8Ed69C09cfdBc4788623ccE9595b0',
-    formNetwork: Networks[1],
+    formNetworkID: 1,
+    formNetwork: testNetworks[1],
     toNetwork: getToNetwork(1, testNetworks),
   },
   'heco-test': {
@@ -154,7 +160,8 @@ const config: any = {
     feeDecimals: '18',
     feeSymbol: 'HT',
     CrossChainAddress: '0x6DdD3767fD2eD3d584B0fb706Af38d5AEc752164',
-    formNetwork: Networks[2],
+    formNetworkID: 2,
+    formNetwork: testNetworks[2],
     toNetwork: getToNetwork(2, testNetworks),
   },
 }
