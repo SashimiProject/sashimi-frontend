@@ -38,7 +38,7 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
   const { fee } = crossChainInfo
   const [token, Token] = useState(defaultValue ?? {})
   const { address, decimals } = token
-  const [[balance]] = useBalances(address)
+  const [[balance], onGetBalance] = useBalances(address)
 
   const {
     account,
@@ -104,9 +104,10 @@ export const useBridge = (defaultValue: any, toChainID: number): bridge => {
     setCrossChainInfo(obj)
   }, [address, ethereum, toChainID])
   const getCrossChainInfo = useCallback(() => {
+    onGetBalance()
     onGetToken()
     getChainInfo()
-  }, [getChainInfo, onGetToken])
+  }, [getChainInfo, onGetBalance, onGetToken])
   useEffect(() => {
     getCrossChainInfo()
   }, [getCrossChainInfo])
