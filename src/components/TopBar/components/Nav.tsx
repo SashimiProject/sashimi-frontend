@@ -49,6 +49,10 @@ const links:Link[] = [
     isExternal: true,
     linkTarget: '_self'
   },
+  {
+    link: '/bridge',
+    text: 'Bridge'
+  },
   // {
   //   link: '/staking',
   //   text: 'Staking'
