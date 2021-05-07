@@ -18,7 +18,7 @@ const TopBar: React.FC<TopBarProps> = () => {
   } = useContext(Context);
   return (
     <StyledTopBar>
-      <StyledContainer size="lg">
+      <StyledContainer size="big">
         <StyledTopBarInner>
           <StyledLogoWrapper>
             <Logo />

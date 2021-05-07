@@ -50,6 +50,10 @@ const links:Link[] = [
     linkTarget: '_self'
   },
   {
+    link: '/bridge',
+    text: 'Bridge'
+  },
+  {
     link: '/staking',
     text: 'Staking'
   },

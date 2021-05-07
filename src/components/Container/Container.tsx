@@ -3,7 +3,7 @@ import styled, { ThemeContext } from 'styled-components'
 
 interface ContainerProps {
   children?: React.ReactNode,
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'md' | 'lg'| 'big'
 }
 
 const Container: React.FC<ContainerProps> = ({ children, size = 'md' }) => {
@@ -15,6 +15,9 @@ const Container: React.FC<ContainerProps> = ({ children, size = 'md' }) => {
       break
     case 'md':
       width = siteWidth * 2 / 3
+      break
+    case 'big':
+      width = siteWidth * 1.3
       break
     case 'lg':
     default:
