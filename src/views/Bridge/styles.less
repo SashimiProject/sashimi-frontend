@@ -1,0 +1,246 @@
+@import '~antd/lib/style/themes/default.less';
+@import './assets/theme.less';
+@height: 50px;
+.network-menu-img {
+  margin: 10px 5px;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+}
+.sharding-bridge {
+  .ant-form-item-has-error .ant-form-item-explain,
+  .ant-form-item-has-error .ant-form-item-split {
+    color: @alter-waring-color;
+  }
+  .ant-form-item-has-error .ant-input,
+  .ant-form-item-has-error .ant-input-affix-wrapper,
+  .ant-form-item-has-error .ant-input:hover,
+  .ant-form-item-has-error .ant-input-affix-wrapper:hover {
+    border-color: @alter-waring-color;
+  }
+  margin: auto;
+  width: 100%;
+  max-width: 700px;
+  padding: 24px 0;
+  color: @font-weight-color;
+  font-size: 14px;
+  h1 {
+    font-size: 35px;
+    font-weight: 600;
+  }
+  .bridge-line {
+    color: #9da2aa;
+  }
+  .bridge-note {
+    padding: 10px;
+    color: #9da2aa;
+    background-color: @border-color;
+    border: 1px solid @border-color;
+    margin-bottom: 10px;
+  }
+  .ant-alert-warning {
+    border: 1px solid @border-color;
+    background: @border-color;
+    font-size: 14px;
+    margin: 15px 0;
+    border-radius: 10px;
+    text-align: center;
+    .ant-alert-message,
+    .ant-alert-icon {
+      color: @alter-waring-color;
+    }
+  }
+  .network-list {
+    margin-bottom: 30px;
+    .arrows-box {
+      padding-top: 16px;
+      display: flex;
+      flex: 1;
+      text-align: center;
+      line-height: @height;
+      align-items: center;
+      img {
+        align-self: center;
+        height: 30px;
+        width: 30px;
+      }
+    }
+    .ant-col {
+      align-items: center;
+      justify-content: center;
+      .chain-icon {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .from-box,
+    .to-box {
+      .item-click:hover {
+        cursor: pointer;
+      }
+      .item-row {
+        position: relative;
+        margin-top: 5px;
+        border-radius: 15px;
+        border: 1px solid @normal-color;
+        padding: 20px 10px;
+        span {
+          width: 60%;
+          margin-left: 10px;
+        }
+        align-items: center;
+        .wallet-icon {
+          align-items: center;
+          top: 5px;
+          right: 5px;
+          position: absolute;
+          span {
+            font-size: 10px;
+            width: auto;
+          }
+          img {
+            margin-left: 5px;
+            height: 20px;
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+  .input-address,
+  .ant-input-number,
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    width: 100%;
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 10px;
+    height: @height;
+    line-height: 30px;
+  }
+  .input-element {
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 10px;
+    height: @height;
+    .ant-input {
+      line-height: 24px;
+      color: @font-weight-color;
+    }
+    &:focus {
+      border-color: @primary-color;
+    }
+  }
+  .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
+    line-height: @height;
+  }
+  p {
+    line-height: 25px;
+    border-radius: 20px;
+    padding: 20px;
+    background: #f7f7fa;
+  }
+  .tradable-balance {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    .amount {
+      width: 100%;
+      font-size: 16px;
+      font-weight: 500;
+      color: @font-weight-color;
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow: hidden;
+    }
+    span:first-child {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: inherit;
+      font-weight: inherit;
+      color: @text-normal-color;
+    }
+    .tip {
+      font-size: 18px;
+      font-weight: 500;
+      color: @text-normal-color;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+  .ant-btn-primary[disabled],
+  .ant-btn-primary[disabled]:hover,
+  .ant-btn-primary[disabled]:focus,
+  .ant-btn-primary[disabled]:active {
+    color: @primary-text;
+    background: @border-color;
+    border-color: @border-color;
+  }
+  .next-button {
+    border-radius: 10px;
+    height: @height;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .item-title {
+    color: @font-weight-color;
+    line-height: 21px;
+    font-weight: 600;
+  }
+  .all-btn {
+    border-color: @border-color;
+    background-color: @border-color;
+    color: @primary-text;
+    border-radius: 8px;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+  }
+  .tip-box {
+    color: @text-normal-color;
+    font-size: 12px;
+    margin-top: 5px;
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sharding-bridge {
+    padding: 20px 10px;
+    font-size: 12px;
+    h1 {
+      font-size: 28px;
+    }
+    font-size: 12px;
+    .network-list {
+      .arrows-box {
+        padding: 0;
+        display: block;
+        img {
+          float: right;
+          height: 25px;
+          width: 25px;
+          transform: rotate(90deg);
+        }
+      }
+      .from-box,
+      .to-box {
+        margin-top: 10px;
+      }
+    }
+    .item-title {
+      font-size: 12px;
+      color: @font-weight-color;
+      line-height: 21px;
+      font-weight: 600;
+    }
+    .tradable-balance {
+      .amount {
+        font-size: 14px;
+      }
+      .tip {
+        font-size: 16px;
+      }
+    }
+  }
+}

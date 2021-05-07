@@ -13,7 +13,23 @@ export const getContract = (provider: provider, address: string) => {
   )
   return contract
 }
-
+export const callERC20ViewMethod = async (
+  functionName: string,
+  provider: provider,
+  nftAddress: string,
+  paramsOption?: any,
+): Promise<string> => {
+  try {
+    const contract = getContract(provider, nftAddress);
+    if (paramsOption) {
+      return await contract.methods[functionName](paramsOption).call();
+    }
+    return await contract.methods[functionName]().call();
+  } catch (e) {
+    console.log('callNFTShardsViewMethod error', e);
+    return '0';
+  }
+};
 export const getAllowance = async (
   lpContract: Contract,
   masterChefContract: Contract,
